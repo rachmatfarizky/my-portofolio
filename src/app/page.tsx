@@ -88,6 +88,16 @@ function CVModal({ isOpen, onClose }: CVModalProps) {
         >
           ×
         </button>
+        <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+          <span className="text-sm text-gray-500">Jika CV tidak tampil penuh di mobile, silakan download file di bawah.</span>
+          <a
+            href="/cv.pdf"
+            download
+            className="inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
+          >
+            Download CV
+          </a>
+        </div>
         <iframe
           src="/cv.pdf"
           title="CV Saya"
@@ -251,8 +261,7 @@ export default function Home() {
 				<footer className="bg-gray-800 text-white">
 					<div className="container mx-auto px-6 py-8 text-center">
 						<p>
-							&copy; {new Date().getFullYear()} Rachmat Farizky. Dibuat dengan  
-							dan semangat.
+							&copy; {new Date().getFullYear()} Rachmat Farizky. Dibuat dengan ❤️	dan semangat.
 						</p>
 					</div>
 				</footer>
