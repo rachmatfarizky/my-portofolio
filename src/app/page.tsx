@@ -137,13 +137,16 @@ export default function Home() {
 							</div>
 						</div>
 						<div className="md:w-1/2 flex justify-center mb-10 md:mb-0">
-							<Image
-								src="/profile.jpg"
-								alt="Foto profil Anda"
-								width={320}
-								height={320}
-								className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-2xl"
-							/>
+							<div className="rounded-full overflow-hidden w-64 h-64 md:w-80 md:h-80 bg-gray-900 flex items-center justify-center">
+								<Image
+									src="/profile.jpg"
+									alt="Foto profil"
+									width={320}
+									height={320}
+									className="object-cover object-center w-full h-full aspect-square"
+									priority
+								/>
+							</div>
 						</div>
 					</section>
 
