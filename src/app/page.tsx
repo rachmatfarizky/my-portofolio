@@ -70,8 +70,37 @@ function ProjectCard({ imgSrc, title, description, tags, link }: ProjectCardProp
   );
 }
 
+// State untuk popup CV
+type CVModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+function CVModal({ isOpen, onClose }: CVModalProps) {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+      <div className="bg-white rounded-lg shadow-xl max-w-3xl w-full p-6 relative">
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-500 hover:text-indigo-600 text-2xl font-bold"
+          aria-label="Tutup CV"
+        >
+          ×
+        </button>
+        <iframe
+          src="/cv.pdf"
+          title="CV Saya"
+          className="w-full h-[70vh] rounded"
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [showCV, setShowCV] = useState(false);
 
 	useEffect(() => {
 		const handleNavClick = (e: MouseEvent) => {
@@ -129,12 +158,19 @@ export default function Home() {
 					<section className="flex flex-col-reverse md:flex-row items-center text-center md:text-left min-h-[70vh]">
 						<div className="md:w-1/2 mb-10 md:mb-0">
 							<h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-4">Hai, Saya Rachmat Farizky</h1>
-							<p className="text-lg text-indigo-600 font-semibold mb-6">Internet Engineering Undergraduate</p>
+							<p className="text-lg text-indigo-600 font-semibold mb-6">Teknologi Rekayasa Internet</p>
 							<p className="text-gray-600 dark:text-gray-300 max-w-lg mx-auto md:mx-0 mb-8">Saya bersemangat dalam pengembangan aplikasi web, IoT, dan solusi digital inovatif. Selamat datang di portofolio saya.</p>
 							<div className="flex justify-center md:justify-start space-x-4">
 								<a href="#proyek" className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 shadow-lg">Lihat Proyek Saya</a>
-								<a href="/cv.pdf" download className="bg-white text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300 border border-gray-300">Unduh CV</a>
+								<button
+									type="button"
+									onClick={() => setShowCV(true)}
+									className="bg-white text-gray-700 px-6 py-3 rounded-lg border border-gray-300 shadow-lg transition duration-300 hover:bg-indigo-600 hover:text-white hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 active:scale-95"
+								>
+									Lihat CV
+								</button>
 							</div>
+							<CVModal isOpen={showCV} onClose={() => setShowCV(false)} />
 						</div>
 						<div className="md:w-1/2 flex justify-center mb-10 md:mb-0">
 							<div className="rounded-full overflow-hidden w-64 h-64 md:w-80 md:h-80 bg-gray-900 flex items-center justify-center">
