@@ -139,7 +139,7 @@ export default function Home() {
 						<div className="md:w-1/2 flex justify-center mb-10 md:mb-0">
 							<div className="rounded-full overflow-hidden w-64 h-64 md:w-80 md:h-80 bg-gray-900 flex items-center justify-center">
 								<Image
-									src="/profile.jpg"
+									src="/profile.png"
 									alt="Foto profil"
 									width={320}
 									height={320}
